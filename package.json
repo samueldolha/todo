@@ -8,6 +8,8 @@
   },
   "license": "MIT",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "webpack": "4.30.0"
+  },
   "scripts": {}
 }
