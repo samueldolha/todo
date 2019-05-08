@@ -53,6 +53,13 @@
       "error",
       "always"
     ],
+    "padded-blocks": [
+      "error",
+      "never",
+      {
+        "allowSingleLineBlocks": false
+      }
+    ],
     "quote-props": [
       "error",
       "as-needed"
