@@ -1,3 +1,4 @@
-import { render } from 'preact';
+import { h, render } from 'preact';
+import App from './components/App';
 
-render(null, document.body);
+render(<App />, document.body);
