@@ -1,0 +1,74 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "espree",
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "globalReturn": true,
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "pragma": "h",
+      "version": "latest"
+    }
+  },
+  "plugins": [
+    "react"
+  ],
+  "extends": [
+    "eslint:all",
+    "plugin:react/all"
+  ],
+  "rules": {
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "indent": [
+      "error",
+      2
+    ],
+    "no-extra-parens": [
+      "error",
+      "all",
+      {
+        "ignoreJSX": "multi-line"
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "varsIgnorePattern": "h"
+      }
+    ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "quote-props": [
+      "error",
+      "as-needed"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "react/jsx-filename-extension": "off",
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
+    "strict": [
+      "error",
+      "global"
+    ]
+  }
+}
