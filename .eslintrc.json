@@ -60,6 +60,14 @@
         "allowSingleLineBlocks": false
       }
     ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
+      }
+    ],
     "quote-props": [
       "error",
       "as-needed"
