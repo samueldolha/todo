@@ -32,6 +32,10 @@
       "error",
       "consistent"
     ],
+    "array-element-newline": [
+      "error",
+      "consistent"
+    ],
     "indent": [
       "error",
       2
