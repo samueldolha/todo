@@ -40,6 +40,12 @@
       "error",
       2
     ],
+    "new-cap": [
+      "error",
+      {
+        "capIsNewExceptionPattern": "^immutable\\..+$"
+      }
+    ],
     "no-extra-parens": [
       "error",
       "all",
