@@ -113,5 +113,15 @@
       "error",
       "global"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "spec.js"
+      ],
+      "rules": {
+        "react/jsx-no-bind": "off"
+      }
+    }
+  ]
 }
