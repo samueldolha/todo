@@ -23,6 +23,7 @@ const TodoEntry = ({ onAddTodo }) => {
       </label>
       {' '}
       <button
+        disabled={input === ''}
         onClick={useCallback(
           () => {
             onAddTodo(input);
