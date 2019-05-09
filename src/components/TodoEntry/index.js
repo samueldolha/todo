@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const TodoEntry = ({ onAddTodo }) => {
   const [input, setInput] = useState('');
+  const inputFieldRef = useRef(null);
   const addButtonRef = useRef(null);
 
   return (
@@ -27,6 +28,7 @@ const TodoEntry = ({ onAddTodo }) => {
             },
             []
           )}
+          ref={inputFieldRef}
           type="text"
           value={input}
         />
@@ -38,6 +40,10 @@ const TodoEntry = ({ onAddTodo }) => {
           () => {
             onAddTodo(input);
             setInput('');
+
+            if (inputFieldRef.current !== null) {
+              inputFieldRef.current.focus();
+            }
           },
           [input, onAddTodo]
         )}
