@@ -92,6 +92,12 @@
       "error",
       "single"
     ],
+    "react/display-name": [
+      "error",
+      {
+        "ignoreTranspilerName": true
+      }
+    ],
     "react/jsx-filename-extension": "off",
     "react/jsx-indent": [
       "error",

@@ -12,6 +12,8 @@ const TodoList = ({ todos }) => (
   </ul>
 );
 
+TodoList.displayName = 'TodoList';
+
 TodoList.propTypes = {
   todos: PropTypes.instanceOf(immutable.List).isRequired
 };

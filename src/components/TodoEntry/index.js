@@ -35,6 +35,8 @@ const TodoEntry = ({ onAddTodo }) => {
   );
 };
 
+TodoEntry.displayName = 'TodoEntry';
+
 TodoEntry.propTypes = {
   onAddTodo: PropTypes.func.isRequired
 };
