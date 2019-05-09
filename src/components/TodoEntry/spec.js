@@ -10,10 +10,11 @@ it('clears its input after adding a todo', async () => {
     getByLabelText,
     queryAllByDisplayValue
   } = render(<TodoEntry onAddTodo={spy} />);
+  const inputField = getByLabelText(/todo/iu);
   const value = 'buy groceries';
-  await fireEvent.input(getByLabelText(/todo/iu), { target: { value } });
+  await fireEvent.input(inputField, { target: { value } });
   expect(queryAllByDisplayValue(value).length).toBe(1);
-  await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
+  await fireEvent.keyDown(inputField, { key: 'Enter' });
   expect(spy).toBeCalledTimes(1);
   expect(queryAllByDisplayValue(value).length).toBe(0);
 });
