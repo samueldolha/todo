@@ -1,6 +1,7 @@
 import { Fragment, h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import immutable from 'immutable';
+import TodoList from '../TodoList';
 
 const App = () => {
   const [todos, setTodos] = useState(immutable.List());
@@ -40,13 +41,7 @@ const App = () => {
         >
           {'Add'}
         </button>
-        <ul>
-          {todos.map((todo) => (
-            <li key={todo}>
-              {todo}
-            </li>
-          )).toArray()}
-        </ul>
+        <TodoList todos={todos} />
       </main>
       <footer>
         {'© 2019 Samuel Dolha'}
