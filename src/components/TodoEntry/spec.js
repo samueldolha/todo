@@ -2,6 +2,8 @@ import { h } from 'preact';
 import { cleanup, fireEvent, render } from 'preact-testing-library';
 import TodoEntry from '.';
 
+afterEach(cleanup);
+
 it('clears its input after adding a todo', async () => {
   const {
     getByLabelText,
@@ -13,7 +15,6 @@ it('clears its input after adding a todo', async () => {
   expect(queryByDisplayValue(value)).not.toBeNull();
   await fireEvent.click(getByText(/add/iu));
   expect(queryByDisplayValue(value)).toBeNull();
-  cleanup();
 });
 
 it('prevents adding an empty todo', () => {
@@ -23,5 +24,4 @@ it('prevents adding an empty todo', () => {
   } = render(<TodoEntry onAddTodo={() => null} />);
   expect(queryByDisplayValue('')).not.toBeNull();
   expect(getByText(/add/iu).disabled).toBe(true);
-  cleanup();
 });
