@@ -22,7 +22,8 @@
     }
   },
   "plugins": [
-    "react"
+    "react",
+    "react-hooks"
   ],
   "extends": [
     "eslint:all",
@@ -96,6 +97,8 @@
       "error",
       2
     ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     "sort-imports": [
       "error",
       {
