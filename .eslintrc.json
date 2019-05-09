@@ -43,6 +43,10 @@
       "error",
       2
     ],
+    "multiline-comment-style": [
+      "error",
+      "separate-lines"
+    ],
     "new-cap": [
       "error",
       {
