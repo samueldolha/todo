@@ -8,7 +8,8 @@ it('adds a todo to the list', async () => {
   const { getByLabelText, queryAllByText } = render(<App />);
   const value = 'buy groceries';
   expect(queryAllByText(value).length).toBe(0);
-  await fireEvent.input(getByLabelText(/todo/iu), { target: { value } });
-  await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
+  const inputField = getByLabelText(/todo/iu);
+  await fireEvent.input(inputField, { target: { value } });
+  await fireEvent.keyDown(inputField, { key: 'Enter' });
   expect(queryAllByText(value).length).toBe(1);
 });
