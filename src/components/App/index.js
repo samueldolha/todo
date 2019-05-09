@@ -1,9 +1,10 @@
 import { Fragment, h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 import immutable from 'immutable';
 
 const App = () => {
-  const [todos] = useState(immutable.List());
+  const [todos, setTodos] = useState(immutable.List());
+  const [input, setInput] = useState('');
 
   return (
     <Fragment>
@@ -13,6 +14,32 @@ const App = () => {
         </h1>
       </header>
       <main>
+        <label>
+          {'Enter a todo:'}
+          {' '}
+          <input
+            onChange={useCallback(
+              (event) => {
+                setInput(event.target.value);
+              },
+              []
+            )}
+            type="text"
+            value={input}
+          />
+        </label>
+        {' '}
+        <button
+          onClick={useCallback(
+            () => {
+              setTodos(todos.push(input));
+            },
+            [input, todos]
+          )}
+          type="button"
+        >
+          {'Add'}
+        </button>
         <ul>
           {todos.map((todo) => (
             <li key={todo}>
