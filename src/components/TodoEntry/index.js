@@ -26,6 +26,7 @@ const TodoEntry = ({ onAddTodo }) => {
         onClick={useCallback(
           () => {
             onAddTodo(input);
+            setInput('');
           },
           [input, onAddTodo]
         )}
