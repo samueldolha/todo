@@ -2,7 +2,9 @@ import { h } from 'preact';
 import { cleanup, fireEvent, render } from 'preact-testing-library';
 import App from '.';
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+});
 
 it('adds a todo to the list', async () => {
   const { getByLabelText, queryAllByText } = render(<App />);

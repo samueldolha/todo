@@ -3,7 +3,9 @@ import { cleanup, render } from 'preact-testing-library';
 import immutable from 'immutable';
 import TodoList from '.';
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+});
 
 it('displays the todos', () => {
   const firstTodo = 'buy groceries';

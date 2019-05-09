@@ -11,7 +11,9 @@ const setUp = () => {
   };
 };
 
-afterEach(cleanup);
+afterEach(() => {
+  cleanup();
+});
 
 it('clears its input after adding a todo', async () => {
   const {
