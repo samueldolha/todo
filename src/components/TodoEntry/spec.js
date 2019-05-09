@@ -8,19 +8,19 @@ it('clears its input after adding a todo', async () => {
   const spy = jest.fn();
   const {
     getByLabelText,
-    queryByDisplayValue
+    queryAllByDisplayValue
   } = render(<TodoEntry onAddTodo={spy} />);
   const value = 'buy groceries';
   await fireEvent.input(getByLabelText(/todo/iu), { target: { value } });
-  expect(queryByDisplayValue(value)).not.toBeNull();
+  expect(queryAllByDisplayValue(value).length).toBe(1);
   await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
-  expect(spy).toBeCalled();
-  expect(queryByDisplayValue(value)).toBeNull();
+  expect(spy).toBeCalledTimes(1);
+  expect(queryAllByDisplayValue(value).length).toBe(0);
 });
 
 it('prevents adding an empty todo', () => {
   const spy = jest.fn();
-  const { queryByDisplayValue } = render(<TodoEntry onAddTodo={spy} />);
-  expect(queryByDisplayValue('')).not.toBeNull();
-  expect(spy).not.toBeCalled();
+  const { queryAllByDisplayValue } = render(<TodoEntry onAddTodo={spy} />);
+  expect(queryAllByDisplayValue('').length).toBe(1);
+  expect(spy).toBeCalledTimes(0);
 });

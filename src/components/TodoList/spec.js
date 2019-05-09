@@ -9,8 +9,8 @@ it('displays the todos', () => {
   const firstTodo = 'buy groceries';
   const secondTodo = 'walk the dog';
   const {
-    queryByText
+    queryAllByText
   } = render(<TodoList todos={immutable.List([firstTodo, secondTodo])} />);
-  expect(queryByText(firstTodo)).not.toBeNull();
-  expect(queryByText(secondTodo)).not.toBeNull();
+  expect(queryAllByText(firstTodo).length).toBe(1);
+  expect(queryAllByText(secondTodo).length).toBe(1);
 });

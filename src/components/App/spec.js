@@ -5,10 +5,10 @@ import App from '.';
 afterEach(cleanup);
 
 it('adds a todo to the list', async () => {
-  const { getByLabelText, queryByText } = render(<App />);
+  const { getByLabelText, queryAllByText } = render(<App />);
   const value = 'buy groceries';
-  expect(queryByText(value)).toBeNull();
+  expect(queryAllByText(value).length).toBe(0);
   await fireEvent.input(getByLabelText(/todo/iu), { target: { value } });
   await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
-  expect(queryByText(value)).not.toBeNull();
+  expect(queryAllByText(value).length).toBe(1);
 });
