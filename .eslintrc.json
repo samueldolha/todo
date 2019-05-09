@@ -92,7 +92,12 @@
       "error",
       2
     ],
-    "sort-imports": "off",
+    "sort-imports": [
+      "error",
+      {
+        "ignoreDeclarationSort": true
+      }
+    ],
     "strict": [
       "error",
       "global"
