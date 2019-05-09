@@ -15,3 +15,13 @@ it('clears its input after adding a todo', async () => {
   expect(queryByDisplayValue(value)).toBeNull();
   cleanup();
 });
+
+it('prevents adding an empty todo', () => {
+  const {
+    getByText,
+    queryByDisplayValue
+  } = render(<TodoEntry onAddTodo={() => null} />);
+  expect(queryByDisplayValue('')).not.toBeNull();
+  expect(getByText(/add/iu).disabled).toBe(true);
+  cleanup();
+});
