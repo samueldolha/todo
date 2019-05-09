@@ -1,9 +1,10 @@
 import { Fragment, h } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback, useRef, useState } from 'preact/hooks';
 import PropTypes from 'prop-types';
 
 const TodoEntry = ({ onAddTodo }) => {
   const [input, setInput] = useState('');
+  const addButtonRef = useRef(null);
 
   return (
     <Fragment>
@@ -14,6 +15,14 @@ const TodoEntry = ({ onAddTodo }) => {
           onInput={useCallback(
             (event) => {
               setInput(event.target.value);
+            },
+            []
+          )}
+          onKeyDown={useCallback(
+            (event) => {
+              if (event.key === 'Enter' && addButtonRef.current !== null) {
+                addButtonRef.current.click();
+              }
             },
             []
           )}
@@ -31,6 +40,7 @@ const TodoEntry = ({ onAddTodo }) => {
           },
           [input, onAddTodo]
         )}
+        ref={addButtonRef}
         type="button"
       >
         {'Add'}
