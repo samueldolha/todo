@@ -12,6 +12,7 @@ const TodoEntry = ({ onAddTodo }) => {
         {'Enter a todo:'}
         {' '}
         <input
+          autoFocus
           onInput={useCallback(
             (event) => {
               setInput(event.target.value);
