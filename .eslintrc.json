@@ -75,6 +75,10 @@
       "error",
       "never"
     ],
+    "operator-linebreak": [
+      "error",
+      "before"
+    ],
     "padded-blocks": [
       "error",
       "never",
