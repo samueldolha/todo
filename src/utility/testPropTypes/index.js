@@ -2,66 +2,71 @@ import PropTypes from 'prop-types';
 
 const location = 'prop';
 
-const createExpecter = (expecter) => (key) => {
+const createExpecter = (context, expecter) => (key) => {
   const consoleError = jest.spyOn(console, 'error').mockImplementation();
-  expecter(consoleError, key);
+  expecter(
+    {
+      ...context,
+      consoleError
+    },
+    key
+  );
   PropTypes.resetWarningCache();
   consoleError.mockRestore();
 };
 
-const expectRequired
-  = (Component, validProps) => createExpecter((consoleError, key) => {
-    PropTypes.checkPropTypes(
-      // eslint-disable-next-line react/forbid-foreign-prop-types
-      Component.propTypes,
-      {
-        ...validProps,
-        [key]: null
-      },
-      location,
-      Component.displayName
-    );
-    expect(consoleError).toBeCalledWith(`Warning: Failed ${location} type:`
-      + ` The ${location} \`${key}\` is marked as required in`
-      + ` \`${Component.displayName}\`, but its value is \`null\`.`);
-  });
+const expectRequired = (context, key) => {
+  PropTypes.checkPropTypes(
+    // eslint-disable-next-line react/forbid-foreign-prop-types
+    context.Component.propTypes,
+    {
+      ...context.validProps,
+      [key]: null
+    },
+    location,
+    context.Component.displayName
+  );
+  expect(context.consoleError).toBeCalledWith('Warning: Failed'
+    + ` ${location} type: The ${location} \`${key}\` is marked as required in`
+    + ` \`${context.Component.displayName}\`, but its value is \`null\`.`);
+};
 
-const expectType
-  = (Component, validProps) => createExpecter((consoleError, key) => {
-    PropTypes.checkPropTypes(
-      // eslint-disable-next-line react/forbid-foreign-prop-types
-      Component.propTypes,
-      {
-        ...validProps,
-        [key]: Symbol(key)
-      },
-      location,
-      Component.displayName
-    );
-    expect(consoleError).toBeCalledWith(`Warning: Failed ${location} type:`
-      + ` Invalid ${location} \`${key}\` of type \`symbol\` supplied to`
-      + ` \`${Component.displayName}\`,`
-      + ` expected \`${typeof validProps[key]}\`.`);
-  });
+const expectType = (context, key) => {
+  PropTypes.checkPropTypes(
+    // eslint-disable-next-line react/forbid-foreign-prop-types
+    context.Component.propTypes,
+    {
+      ...context.validProps,
+      [key]: Symbol(key)
+    },
+    location,
+    context.Component.displayName
+  );
+  expect(context.consoleError).toBeCalledWith('Warning: Failed'
+    + ` ${location} type:`
+    + ` Invalid ${location} \`${key}\` of type \`symbol\` supplied to`
+    + ` \`${context.Component.displayName}\`,`
+    + ` expected \`${typeof context.validProps[key]}\`.`);
+};
 
-const expectInstanceOf
-  = (Component, validProps) => createExpecter((consoleError, key) => {
-    const Placeholder = () => null;
-    PropTypes.checkPropTypes(
-      // eslint-disable-next-line react/forbid-foreign-prop-types
-      Component.propTypes,
-      {
-        ...validProps,
-        [key]: new Placeholder()
-      },
-      location,
-      Component.displayName
-    );
-    expect(consoleError).toBeCalledWith(`Warning: Failed ${location} type:`
-      + ` Invalid ${location} \`${key}\` of type \`${Placeholder.name}\``
-      + ` supplied to \`${Component.displayName}\`,`
-      + ` expected instance of \`${validProps[key].constructor.name}\`.`);
-  });
+const expectInstanceOf = (context, key) => {
+  const Placeholder = () => null;
+  PropTypes.checkPropTypes(
+    // eslint-disable-next-line react/forbid-foreign-prop-types
+    context.Component.propTypes,
+    {
+      ...context.validProps,
+      [key]: new Placeholder()
+    },
+    location,
+    context.Component.displayName
+  );
+  expect(context.consoleError).toBeCalledWith('Warning: Failed'
+    + ` ${location} type:`
+    + ` Invalid ${location} \`${key}\` of type \`${Placeholder.name}\``
+    + ` supplied to \`${context.Component.displayName}\`,`
+    + ` expected instance of \`${context.validProps[key].constructor.name}\`.`);
+};
 
 export default (Component, validProps) => {
   if (typeof Component !== 'function') {
@@ -82,9 +87,14 @@ export default (Component, validProps) => {
     throw new Error('Expected "validProps" to be a nonnull object');
   }
 
+  const context = {
+    Component,
+    validProps
+  };
+
   return {
-    expectInstanceOf: expectInstanceOf(Component, validProps),
-    expectRequired: expectRequired(Component, validProps),
-    expectType: expectType(Component, validProps)
+    expectInstanceOf: createExpecter(context, expectInstanceOf),
+    expectRequired: createExpecter(context, expectRequired),
+    expectType: createExpecter(context, expectType)
   };
 };
