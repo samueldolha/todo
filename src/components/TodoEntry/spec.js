@@ -47,9 +47,13 @@ describe('behavior', () => {
     expect(queryAllByDisplayValue(value).length).toBe(0);
   });
 
-  it('prevents adding an empty todo', () => {
-    const { onAddTodo, render: { queryAllByDisplayValue } } = setUp();
+  it('prevents adding an empty todo', async () => {
+    const {
+      onAddTodo,
+      render: { getByLabelText, queryAllByDisplayValue }
+    } = setUp();
     expect(queryAllByDisplayValue('').length).toBe(1);
+    await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
     expect(onAddTodo).toBeCalledTimes(0);
   });
 });
