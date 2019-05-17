@@ -22,6 +22,9 @@
       "version": "latest"
     }
   },
+  "globals": {
+    "h": "readonly"
+  },
   "plugins": [
     "react",
     "react-hooks"

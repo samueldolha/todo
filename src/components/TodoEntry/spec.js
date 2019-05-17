@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { cleanup, fireEvent, render } from 'preact-testing-library';
 import testPropTypes from '../../utility/testPropTypes';
 import TodoEntry from '.';

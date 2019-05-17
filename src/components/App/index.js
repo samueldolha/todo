@@ -1,4 +1,4 @@
-import { Fragment, h } from 'preact';
+import { Fragment } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import immutable from 'immutable';
 import TodoList from '../TodoList';

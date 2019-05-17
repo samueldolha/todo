@@ -12,6 +12,14 @@
       {
         "pragma": "h"
       }
+    ],
+    [
+      "@emotion/babel-plugin-jsx-pragmatic",
+      {
+        "module": "preact",
+        "import": "h",
+        "export": "h"
+      }
     ]
   ],
   "presets": [

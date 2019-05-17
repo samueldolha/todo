@@ -1,4 +1,3 @@
-import { h } from 'preact';
 import { cleanup, render } from 'preact-testing-library';
 import immutable from 'immutable';
 import testPropTypes from '../../utility/testPropTypes';
