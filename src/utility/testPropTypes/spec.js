@@ -59,7 +59,7 @@ describe('expectRequired', () => {
     Component.propTypes = { [numberProp]: PropTypes.number.isRequired };
     const { expectRequired } = testPropTypes(
       Component,
-      { [numberProp]: numberProp }
+      { [numberProp]: 1 }
     );
 
     describe('key', () => {
@@ -90,7 +90,7 @@ describe('expectRequired', () => {
       Component,
       {
         [optionalProp]: null,
-        [requiredProp]: 'baz'
+        [requiredProp]: ''
       }
     );
 
@@ -116,7 +116,7 @@ describe('expectType', () => {
     Component.propTypes = { [numberProp]: PropTypes.number };
     const { expectType } = testPropTypes(
       Component,
-      { [numberProp]: numberProp }
+      { [numberProp]: null }
     );
 
     describe('key', () => {
@@ -173,7 +173,7 @@ describe('expectInstanceOf', () => {
     Component.propTypes = { [numberProp]: PropTypes.number };
     const { expectInstanceOf } = testPropTypes(
       Component,
-      { [numberProp]: numberProp }
+      { [numberProp]: null }
     );
 
     describe('key', () => {
