@@ -43,6 +43,12 @@
       "consistent"
     ],
     "capitalized-comments": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "functions": "never"
+      }
+    ],
     "indent": [
       "error",
       2
