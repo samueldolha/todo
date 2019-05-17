@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import immutable from 'immutable';
+import TodoItem from '../TodoItem';
 
 const TodoList = ({ todos }) => (
   <ul>
     {todos.map((todo) => (
-      <li key={todo}>
-        {todo}
-      </li>
+      <TodoItem
+        key={todo}
+        value={todo}
+      />
     )).toArray()}
   </ul>
 );
