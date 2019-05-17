@@ -40,10 +40,9 @@ const expectType = (Component, validProps) => (key) => {
   consoleError.mockRestore();
 };
 
-const Placeholder = () => null;
-
 const expectInstanceOf = (Component, validProps) => (key) => {
   const consoleError = jest.spyOn(console, 'error').mockImplementation();
+  const Placeholder = () => null;
   PropTypes.checkPropTypes(
     // eslint-disable-next-line react/forbid-foreign-prop-types
     Component.propTypes,
