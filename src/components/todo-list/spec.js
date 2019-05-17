@@ -1,6 +1,6 @@
 import { cleanup, render } from 'preact-testing-library';
 import immutable from 'immutable';
-import testPropTypes from '../../utility/testPropTypes';
+import testPropTypes from '../../utility/test-prop-types';
 import TodoList from '.';
 
 describe('props', () => {

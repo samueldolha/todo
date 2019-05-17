@@ -1,5 +1,5 @@
 import { cleanup, fireEvent, render } from 'preact-testing-library';
-import testPropTypes from '../../utility/testPropTypes';
+import testPropTypes from '../../utility/test-prop-types';
 import TodoEntry from '.';
 
 describe('props', () => {

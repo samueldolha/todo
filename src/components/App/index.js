@@ -1,8 +1,8 @@
 import { Fragment } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import immutable from 'immutable';
-import TodoList from '../TodoList';
-import TodoEntry from '../TodoEntry';
+import TodoList from '../todo-list';
+import TodoEntry from '../todo-entry';
 
 const App = () => {
   const [todos, setTodos] = useState(immutable.List());

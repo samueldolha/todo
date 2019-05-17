@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import immutable from 'immutable';
-import TodoItem from '../TodoItem';
+import TodoItem from '../todo-item';
 
 const TodoList = ({ todos }) => (
   <ul>
