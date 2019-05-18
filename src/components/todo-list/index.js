@@ -5,10 +5,9 @@ import TodoItem from '../todo-item';
 const TodoList = ({ todos }) => (
   <ul>
     {todos.map((todo) => (
-      <TodoItem
-        key={todo}
-        value={todo}
-      />
+      <li key={todo}>
+        <TodoItem value={todo} />
+      </li>
     )).toArray()}
   </ul>
 );

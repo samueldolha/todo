@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 
-const TodoItem = ({ value }) => (
-  <li>
-    {value}
-  </li>
-);
+const TodoItem = ({ value }) => value;
 
 TodoItem.displayName = 'TodoItem';
 
