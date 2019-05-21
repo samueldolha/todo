@@ -76,6 +76,15 @@
         "ignoreJSX": "multi-line"
       }
     ],
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [
+          0,
+          1
+        ]
+      }
+    ],
     "no-unused-vars": [
       "error",
       {
@@ -151,7 +160,6 @@
         "spec.js"
       ],
       "rules": {
-        "no-magic-numbers": "off",
         "react/jsx-no-bind": "off"
       }
     }
