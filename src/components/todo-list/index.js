@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import { List as ImmutableList } from 'immutable';
-import TodoItem from '../todo-item';
+import PropTypes from "prop-types";
+import { List as ImmutableList } from "immutable";
+import TodoItem from "../todo-item";
 
 const TodoList = ({ todos }) => (
   <ul>
@@ -12,7 +12,7 @@ const TodoList = ({ todos }) => (
   </ul>
 );
 
-TodoList.displayName = 'TodoList';
+TodoList.displayName = "TodoList";
 
 TodoList.propTypes = {
   todos: PropTypes.instanceOf(ImmutableList).isRequired

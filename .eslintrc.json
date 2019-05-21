@@ -124,7 +124,7 @@
     ],
     "quotes": [
       "error",
-      "single"
+      "double"
     ],
     "react/display-name": [
       "error",

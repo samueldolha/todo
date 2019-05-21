@@ -1,8 +1,8 @@
-import { Fragment } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
-import { List as ImmutableList } from 'immutable';
-import TodoList from '../todo-list';
-import TodoEntry from '../todo-entry';
+import { Fragment } from "preact";
+import { useCallback, useState } from "preact/hooks";
+import { List as ImmutableList } from "immutable";
+import TodoList from "../todo-list";
+import TodoEntry from "../todo-entry";
 
 const App = () => {
   const [todos, setTodos] = useState(ImmutableList());
@@ -11,7 +11,7 @@ const App = () => {
     <Fragment>
       <header>
         <h1>
-          {'Todo'}
+          {"Todo"}
         </h1>
       </header>
       <main>
@@ -26,12 +26,12 @@ const App = () => {
         <TodoList todos={todos} />
       </main>
       <footer>
-        {'© 2019 Samuel Dolha'}
+        {"© 2019 Samuel Dolha"}
       </footer>
     </Fragment >
   );
 };
 
-App.displayName = 'App';
+App.displayName = "App";
 
 export default App;

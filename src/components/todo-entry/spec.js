@@ -1,25 +1,25 @@
-import { cleanup, fireEvent, render } from 'preact-testing-library';
-import testPropTypes from '../../utility/test-prop-types';
-import TodoEntry from '.';
+import { cleanup, fireEvent, render } from "preact-testing-library";
+import testPropTypes from "../../utility/test-prop-types";
+import TodoEntry from ".";
 
-describe('props', () => {
+describe("props", () => {
   const {
     expectRequired,
     expectType
   } = testPropTypes(TodoEntry, { onAddTodo: () => null });
 
-  describe('onAddTodo', () => {
-    it('is required', () => {
-      expectRequired('onAddTodo');
+  describe("onAddTodo", () => {
+    it("is required", () => {
+      expectRequired("onAddTodo");
     });
 
-    it('is a function', () => {
-      expectType('onAddTodo');
+    it("is a function", () => {
+      expectType("onAddTodo");
     });
   });
 });
 
-describe('behavior', () => {
+describe("behavior", () => {
   const setUp = () => {
     const onAddTodo = jest.fn();
 
@@ -33,27 +33,27 @@ describe('behavior', () => {
     cleanup();
   });
 
-  it('clears its input after adding a todo', async () => {
+  it("clears its input after adding a todo", async () => {
     const {
       onAddTodo,
       render: { getByLabelText, queryAllByDisplayValue }
     } = setUp();
     const inputField = getByLabelText(/todo/iu);
-    const value = 'buy groceries';
+    const value = "buy groceries";
     await fireEvent.input(inputField, { target: { value } });
     expect(queryAllByDisplayValue(value).length).toBe(1);
-    await fireEvent.keyDown(inputField, { key: 'Enter' });
+    await fireEvent.keyDown(inputField, { key: "Enter" });
     expect(onAddTodo).toBeCalledTimes(1);
     expect(queryAllByDisplayValue(value).length).toBe(0);
   });
 
-  it('prevents adding an empty todo', async () => {
+  it("prevents adding an empty todo", async () => {
     const {
       onAddTodo,
       render: { getByLabelText, queryAllByDisplayValue }
     } = setUp();
-    expect(queryAllByDisplayValue('').length).toBe(1);
-    await fireEvent.keyDown(getByLabelText(/todo/iu), { key: 'Enter' });
+    expect(queryAllByDisplayValue("").length).toBe(1);
+    await fireEvent.keyDown(getByLabelText(/todo/iu), { key: "Enter" });
     expect(onAddTodo).toBeCalledTimes(0);
   });
 });

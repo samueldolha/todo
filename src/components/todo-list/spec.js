@@ -1,33 +1,33 @@
-import { cleanup, render } from 'preact-testing-library';
-import { List as ImmutableList } from 'immutable';
-import testPropTypes from '../../utility/test-prop-types';
-import TodoList from '.';
+import { cleanup, render } from "preact-testing-library";
+import { List as ImmutableList } from "immutable";
+import testPropTypes from "../../utility/test-prop-types";
+import TodoList from ".";
 
-describe('props', () => {
+describe("props", () => {
   const {
     expectRequired,
     expectInstanceOf
   } = testPropTypes(TodoList, { todos: ImmutableList() });
 
-  describe('todos', () => {
-    it('is required', () => {
-      expectRequired('todos');
+  describe("todos", () => {
+    it("is required", () => {
+      expectRequired("todos");
     });
 
-    it('is an Immutable.js List', () => {
-      expectInstanceOf('todos');
+    it("is an Immutable.js List", () => {
+      expectInstanceOf("todos");
     });
   });
 });
 
-describe('behavior', () => {
+describe("behavior", () => {
   afterEach(() => {
     cleanup();
   });
 
-  it('displays the todos', () => {
-    const firstTodo = 'buy groceries';
-    const secondTodo = 'walk the dog';
+  it("displays the todos", () => {
+    const firstTodo = "buy groceries";
+    const secondTodo = "walk the dog";
     const {
       queryAllByText
     } = render(<TodoList todos={ImmutableList([firstTodo, secondTodo])} />);

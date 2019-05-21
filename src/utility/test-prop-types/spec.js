@@ -1,17 +1,17 @@
-import PropTypes from 'prop-types';
-import testPropTypes from '.';
+import PropTypes from "prop-types";
+import testPropTypes from ".";
 
-const displayName = 'Foo';
+const displayName = "Foo";
 
-describe('parameters', () => {
+describe("parameters", () => {
   const propTypes = {};
   const Component = () => null;
   Component.displayName = displayName;
   Component.propTypes = propTypes;
   const validProps = {};
 
-  describe('Component', () => {
-    it('is a function', () => {
+  describe("Component", () => {
+    it("is a function", () => {
       expect(() => {
         testPropTypes(
           {
@@ -20,39 +20,39 @@ describe('parameters', () => {
           },
           validProps
         );
-      }).toThrow('Component');
+      }).toThrow("Component");
     });
 
-    it('has a nonempty string displayName', () => {
+    it("has a nonempty string displayName", () => {
       const NamelessComponent = () => null;
-      NamelessComponent.displayName = '';
+      NamelessComponent.displayName = "";
       NamelessComponent.propTypes = propTypes;
       expect(() => {
         testPropTypes(NamelessComponent, validProps);
-      }).toThrow('displayName');
+      }).toThrow("displayName");
     });
 
-    it('has an object propTypes', () => {
+    it("has an object propTypes", () => {
       const TypelessComponent = () => null;
       TypelessComponent.displayName = displayName;
       TypelessComponent.propTypes = null;
       expect(() => {
         testPropTypes(TypelessComponent, validProps);
-      }).toThrow('propTypes');
+      }).toThrow("propTypes");
     });
   });
 
-  describe('validProps', () => {
-    it('is an object', () => {
+  describe("validProps", () => {
+    it("is an object", () => {
       expect(() => {
         testPropTypes(Component, null);
-      }).toThrow('validProps');
+      }).toThrow("validProps");
     });
   });
 });
 
-describe('expectRequired', () => {
-  describe('parameters', () => {
+describe("expectRequired", () => {
+  describe("parameters", () => {
     const numberProp = 0;
     const Component = () => null;
     Component.displayName = displayName;
@@ -62,24 +62,24 @@ describe('expectRequired', () => {
       { [numberProp]: 1 }
     );
 
-    describe('key', () => {
-      it('is a string', () => {
+    describe("key", () => {
+      it("is a string", () => {
         expect(() => {
           expectRequired(numberProp);
-        }).toThrow('key');
+        }).toThrow("key");
       });
 
-      it('corresponds to a valid property', () => {
+      it("corresponds to a valid property", () => {
         expect(() => {
-          expectRequired('foo');
-        }).toThrow('key');
+          expectRequired("foo");
+        }).toThrow("key");
       });
     });
   });
 
-  describe('behavior', () => {
-    const optionalProp = 'bar';
-    const requiredProp = 'baz';
+  describe("behavior", () => {
+    const optionalProp = "bar";
+    const requiredProp = "baz";
     const Component = () => null;
     Component.displayName = displayName;
     Component.propTypes = {
@@ -90,17 +90,17 @@ describe('expectRequired', () => {
       Component,
       {
         [optionalProp]: null,
-        [requiredProp]: ''
+        [requiredProp]: ""
       }
     );
 
-    it('fails on an optional property', () => {
+    it("fails on an optional property", () => {
       expect(() => {
         expectRequired(optionalProp);
       }).toThrow();
     });
 
-    it('succeeds on a required property', () => {
+    it("succeeds on a required property", () => {
       expect(() => {
         expectRequired(requiredProp);
       }).not.toThrow();
@@ -108,8 +108,8 @@ describe('expectRequired', () => {
   });
 });
 
-describe('expectType', () => {
-  describe('parameters', () => {
+describe("expectType", () => {
+  describe("parameters", () => {
     const numberProp = 0;
     const Component = () => null;
     Component.displayName = displayName;
@@ -119,24 +119,24 @@ describe('expectType', () => {
       { [numberProp]: null }
     );
 
-    describe('key', () => {
-      it('is a string', () => {
+    describe("key", () => {
+      it("is a string", () => {
         expect(() => {
           expectType(numberProp);
-        }).toThrow('key');
+        }).toThrow("key");
       });
 
-      it('corresponds to a valid property', () => {
+      it("corresponds to a valid property", () => {
         expect(() => {
-          expectType('foo');
-        }).toThrow('key');
+          expectType("foo");
+        }).toThrow("key");
       });
     });
   });
 
-  describe('behavior', () => {
-    const invalidProp = 'bar';
-    const validProp = 'baz';
+  describe("behavior", () => {
+    const invalidProp = "bar";
+    const validProp = "baz";
     const Component = () => null;
     Component.displayName = displayName;
     Component.propTypes = {
@@ -151,13 +151,13 @@ describe('expectType', () => {
       }
     );
 
-    it('fails on a mismatched type', () => {
+    it("fails on a mismatched type", () => {
       expect(() => {
         expectType(invalidProp);
       }).toThrow();
     });
 
-    it('succeeds on a matching type', () => {
+    it("succeeds on a matching type", () => {
       expect(() => {
         expectType(validProp);
       }).not.toThrow();
@@ -165,8 +165,8 @@ describe('expectType', () => {
   });
 });
 
-describe('expectInstanceOf', () => {
-  describe('parameters', () => {
+describe("expectInstanceOf", () => {
+  describe("parameters", () => {
     const numberProp = 0;
     const Component = () => null;
     Component.displayName = displayName;
@@ -176,26 +176,26 @@ describe('expectInstanceOf', () => {
       { [numberProp]: null }
     );
 
-    describe('key', () => {
-      it('is a string', () => {
+    describe("key", () => {
+      it("is a string", () => {
         expect(() => {
           expectInstanceOf(numberProp);
-        }).toThrow('key');
+        }).toThrow("key");
       });
 
-      it('corresponds to a valid property', () => {
+      it("corresponds to a valid property", () => {
         expect(() => {
-          expectInstanceOf('foo');
-        }).toThrow('key');
+          expectInstanceOf("foo");
+        }).toThrow("key");
       });
     });
   });
 
-  describe('behavior', () => {
+  describe("behavior", () => {
     const Valid = () => null;
     const Invalid = () => null;
-    const invalidProp = 'bar';
-    const validProp = 'baz';
+    const invalidProp = "bar";
+    const validProp = "baz";
     const Component = () => null;
     Component.displayName = displayName;
     Component.propTypes = {
@@ -210,13 +210,13 @@ describe('expectInstanceOf', () => {
       }
     );
 
-    it('fails on a mismatched constructor', () => {
+    it("fails on a mismatched constructor", () => {
       expect(() => {
         expectInstanceOf(invalidProp);
       }).toThrow();
     });
 
-    it('succeeds on a matching constructor', () => {
+    it("succeeds on a matching constructor", () => {
       expect(() => {
         expectInstanceOf(validProp);
       }).not.toThrow();

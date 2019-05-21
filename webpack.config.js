@@ -1,24 +1,24 @@
-'use strict';
+"use strict";
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   module: {
     rules: [
       {
         test: /\.js$/u,
-        use: 'babel-loader'
+        use: "babel-loader"
       },
       {
         test: /\.css$/u,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               modules: true,
-              localIdentName: '[folder]-[local]'
+              localIdentName: "[folder]-[local]"
             }
           }
         ]
@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: "./src/index.html"
     }),
     new MiniCssExtractPlugin()
   ]

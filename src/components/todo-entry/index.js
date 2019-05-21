@@ -1,13 +1,13 @@
-import { useCallback, useState } from 'preact/hooks';
-import PropTypes from 'prop-types';
+import { useCallback, useState } from "preact/hooks";
+import PropTypes from "prop-types";
 
 const TodoEntry = ({ onAddTodo }) => {
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
 
   return (
     <label>
-      {'Enter a todo:'}
-      {' '}
+      {"Enter a todo:"}
+      {" "}
       <input
         autoFocus
         onInput={useCallback(
@@ -18,9 +18,9 @@ const TodoEntry = ({ onAddTodo }) => {
         )}
         onKeyDown={useCallback(
           (event) => {
-            if (event.key === 'Enter' && input !== '') {
+            if (event.key === "Enter" && input !== "") {
               onAddTodo(input);
-              setInput('');
+              setInput("");
             }
           },
           [input, onAddTodo]
@@ -32,7 +32,7 @@ const TodoEntry = ({ onAddTodo }) => {
   );
 };
 
-TodoEntry.displayName = 'TodoEntry';
+TodoEntry.displayName = "TodoEntry";
 
 TodoEntry.propTypes = {
   onAddTodo: PropTypes.func.isRequired
