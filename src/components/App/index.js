@@ -22,7 +22,7 @@ const App = () => {
       <footer>
         {"© 2019 Samuel Dolha"}
       </footer>
-    </Fragment >
+    </Fragment>
   );
 };
 
