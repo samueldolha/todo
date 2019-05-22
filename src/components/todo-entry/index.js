@@ -1,7 +1,7 @@
 import { useCallback, useState } from "preact/hooks";
 import PropTypes from "prop-types";
 
-const TodoEntry = ({ onAddTodo }) => {
+const TodoEntry = ({ addTodo }) => {
   const [input, setInput] = useState("");
 
   return (
@@ -19,11 +19,11 @@ const TodoEntry = ({ onAddTodo }) => {
         onKeyDown={useCallback(
           (event) => {
             if (event.key === "Enter" && input !== "") {
-              onAddTodo(input);
+              addTodo(input);
               setInput("");
             }
           },
-          [input, onAddTodo]
+          [input, addTodo]
         )}
         type="text"
         value={input}
@@ -35,7 +35,7 @@ const TodoEntry = ({ onAddTodo }) => {
 TodoEntry.displayName = "TodoEntry";
 
 TodoEntry.propTypes = {
-  onAddTodo: PropTypes.func.isRequired
+  addTodo: PropTypes.func.isRequired
 };
 
 export default TodoEntry;

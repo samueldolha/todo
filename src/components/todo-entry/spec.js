@@ -6,26 +6,26 @@ describe("props", () => {
   const {
     expectRequired,
     expectType
-  } = testPropTypes(TodoEntry, { onAddTodo: () => null });
+  } = testPropTypes(TodoEntry, { addTodo: () => null });
 
-  describe("onAddTodo", () => {
+  describe("addTodo", () => {
     it("is required", () => {
-      expectRequired("onAddTodo");
+      expectRequired("addTodo");
     });
 
     it("is a function", () => {
-      expectType("onAddTodo");
+      expectType("addTodo");
     });
   });
 });
 
 describe("behavior", () => {
   const setUp = () => {
-    const onAddTodo = jest.fn();
+    const addTodo = jest.fn();
 
     return {
-      onAddTodo,
-      render: render(<TodoEntry onAddTodo={onAddTodo} />)
+      addTodo,
+      render: render(<TodoEntry addTodo={addTodo} />)
     };
   };
 
@@ -35,7 +35,7 @@ describe("behavior", () => {
 
   it("clears its input after adding a todo", async () => {
     const {
-      onAddTodo,
+      addTodo,
       render: { getByLabelText, queryAllByDisplayValue }
     } = setUp();
     const inputField = getByLabelText(/todo/iu);
@@ -43,17 +43,17 @@ describe("behavior", () => {
     await fireEvent.input(inputField, { target: { value } });
     expect(queryAllByDisplayValue(value).length).toBe(1);
     await fireEvent.keyDown(inputField, { key: "Enter" });
-    expect(onAddTodo).toBeCalledTimes(1);
+    expect(addTodo).toBeCalledTimes(1);
     expect(queryAllByDisplayValue(value).length).toBe(0);
   });
 
   it("prevents adding an empty todo", async () => {
     const {
-      onAddTodo,
+      addTodo,
       render: { getByLabelText, queryAllByDisplayValue }
     } = setUp();
     expect(queryAllByDisplayValue("").length).toBe(1);
     await fireEvent.keyDown(getByLabelText(/todo/iu), { key: "Enter" });
-    expect(onAddTodo).toBeCalledTimes(0);
+    expect(addTodo).toBeCalledTimes(0);
   });
 });

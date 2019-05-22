@@ -16,7 +16,7 @@ const App = () => {
         </h1>
       </header>
       <main>
-        <TodoEntry onAddTodo={useDispatch(dispatch, actionCreators.addTodo)} />
+        <TodoEntry addTodo={useDispatch(dispatch, actionCreators.addTodo)} />
         <TodoList todos={todos} />
       </main>
       <footer>
