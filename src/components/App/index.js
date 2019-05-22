@@ -1,12 +1,16 @@
 import { Fragment } from "preact";
 import { useReducer } from "preact/hooks";
 import { List as ImmutableList } from "immutable";
-import { actionCreators, reducer, useDispatch } from "../../state";
+import { addTodo } from "../../state/actions";
+import useDispatch from "../../state/use-dispatch";
 import TodoList from "../todo-list";
 import TodoEntry from "../todo-entry";
 
 const App = () => {
-  const [todos, dispatch] = useReducer(reducer, ImmutableList());
+  const [todos, dispatch] = useReducer(
+    (state, action) => action(state),
+    ImmutableList()
+  );
 
   return (
     <Fragment>
@@ -16,7 +20,7 @@ const App = () => {
         </h1>
       </header>
       <main>
-        <TodoEntry addTodo={useDispatch(dispatch, actionCreators.addTodo)} />
+        <TodoEntry addTodo={useDispatch(dispatch, addTodo)} />
         <TodoList todos={todos} />
       </main>
       <footer>

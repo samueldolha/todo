@@ -1,8 +1,8 @@
 import { useCallback } from "preact/hooks";
 
-export default (dispatch, actionCreator) => useCallback(
+export default (dispatch, action) => useCallback(
   (...parameters) => {
-    dispatch(actionCreator(parameters));
+    dispatch(action(parameters));
   },
-  [dispatch, actionCreator]
+  [dispatch, action]
 );
