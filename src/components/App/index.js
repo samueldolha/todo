@@ -1,11 +1,12 @@
 import { Fragment } from "preact";
-import { useCallback, useState } from "preact/hooks";
+import { useReducer } from "preact/hooks";
 import { List as ImmutableList } from "immutable";
+import { actionCreators, reducer, useDispatch } from "../../state";
 import TodoList from "../todo-list";
 import TodoEntry from "../todo-entry";
 
 const App = () => {
-  const [todos, setTodos] = useState(ImmutableList());
+  const [todos, dispatch] = useReducer(reducer, ImmutableList());
 
   return (
     <Fragment>
@@ -15,14 +16,7 @@ const App = () => {
         </h1>
       </header>
       <main>
-        <TodoEntry
-          onAddTodo={useCallback(
-            (input) => {
-              setTodos(todos.push(input));
-            },
-            [todos]
-          )}
-        />
+        <TodoEntry onAddTodo={useDispatch(dispatch, actionCreators.addTodo)} />
         <TodoList todos={todos} />
       </main>
       <footer>
