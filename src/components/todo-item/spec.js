@@ -1,6 +1,6 @@
+import { cleanup, render } from "preact-testing-library";
 import testPropTypes from "../../test-prop-types";
 import TodoItem from ".";
-import { cleanup, render } from "preact-testing-library";
 
 describe("props", () => {
   const {
