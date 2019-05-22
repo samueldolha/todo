@@ -1,4 +1,4 @@
-import testPropTypes from "../../utility/test-prop-types";
+import testPropTypes from "../../test-prop-types";
 import TodoItem from ".";
 import { cleanup, render } from "preact-testing-library";
 

@@ -1,8 +1,8 @@
 import { Fragment } from "preact";
 import { useReducer } from "preact/hooks";
 import { List as ImmutableList } from "immutable";
-import { addTodo } from "../../state/actions";
-import useDispatch from "../../state/use-dispatch";
+import { addTodo } from "../../actions";
+import useDispatch from "../../use-dispatch";
 import TodoList from "../todo-list";
 import TodoEntry from "../todo-entry";
 
