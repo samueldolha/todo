@@ -14,7 +14,7 @@ describe("props", () => {
       expectRequired("todos");
     });
 
-    it("is an Immutable.js List", () => {
+    it("is an ImmutableList", () => {
       expectInstanceOf("todos");
     });
   });
