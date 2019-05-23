@@ -49,6 +49,27 @@ describe("parameters", () => {
       }).toThrow("validProps");
     });
   });
+
+  describe("output", () => {
+    const output = testPropTypes(Component, validProps);
+
+    it("is a nonnull object", () => {
+      expect(typeof output).toBe("object");
+      expect(output).not.toBe(null);
+    });
+
+    it("has a function expectRequired", () => {
+      expect(typeof output.expectRequired).toBe("function");
+    });
+
+    it("has a function expectType", () => {
+      expect(typeof output.expectType).toBe("function");
+    });
+
+    it("has a function expectInstanceOf", () => {
+      expect(typeof output.expectInstanceOf).toBe("function");
+    });
+  });
 });
 
 describe("expectRequired", () => {
