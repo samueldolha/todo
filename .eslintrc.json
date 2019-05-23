@@ -146,6 +146,10 @@
         "ignoreDeclarationSort": true
       }
     ],
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
     "strict": [
       "error",
       "global"
