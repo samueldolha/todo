@@ -11,7 +11,7 @@
     "ecmaVersion": 9,
     "sourceType": "module",
     "ecmaFeatures": {
-      "globalReturn": true,
+      "globalReturn": false,
       "impliedStrict": true,
       "jsx": true
     }
