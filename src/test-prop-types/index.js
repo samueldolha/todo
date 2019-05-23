@@ -1,3 +1,4 @@
+/* eslint-env jest */
 import PropTypes from "prop-types";
 
 const location = "prop";

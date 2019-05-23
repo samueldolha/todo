@@ -3,7 +3,6 @@
   "env": {
     "browser": true,
     "es6": true,
-    "jest": true,
     "node": true
   },
   "parser": "espree",
@@ -152,5 +151,13 @@
       "error",
       "global"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": "spec.js",
+      "env": {
+        "jest": true
+      }
+    }
+  ]
 }
