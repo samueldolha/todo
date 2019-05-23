@@ -5,7 +5,7 @@ const location = "prop";
 const createExpecter = (context, expecter) => (key) => {
   if (typeof key !== "string"
     || !Object.prototype.hasOwnProperty.call(context.validProps, key)) {
-    throw new Error("Expected \"key\" to be a valid property");
+    throw new Error("Expected key to be a valid property");
   }
 
   const consoleError = jest.spyOn(console, "error").mockImplementation();
@@ -85,7 +85,7 @@ export default (Component, validProps) => {
 
   // eslint-disable-next-line react/forbid-foreign-prop-types
   if (typeof Component.propTypes !== "object" || Component.propTypes === null) {
-    throw new Error("Expected \"Component.propTypes\" to be a nonnull object");
+    throw new Error("Expected Component.propTypes to be a nonnull object");
   }
 
   if (typeof validProps !== "object" || validProps === null) {
