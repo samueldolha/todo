@@ -138,6 +138,7 @@
       "error",
       2
     ],
+    "react/no-set-state": "off",
     "react/static-property-placement": [
       "error",
       "property assignment"
