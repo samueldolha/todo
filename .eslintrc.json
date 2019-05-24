@@ -123,6 +123,10 @@
       "error",
       "double"
     ],
+    "react/destructuring-assignment": [
+      "error",
+      "never"
+    ],
     "react/display-name": [
       "error",
       {
