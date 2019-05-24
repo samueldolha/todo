@@ -166,7 +166,7 @@
   },
   "overrides": [
     {
-      "files": "spec.js",
+      "files": "index.spec.js",
       "env": {
         "jest": true
       }
