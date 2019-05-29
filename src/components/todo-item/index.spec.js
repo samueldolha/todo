@@ -1,32 +1,65 @@
 import { cleanup, render } from "preact-testing-library";
 import testPropTypes from "../../test-prop-types";
+import createTodo from "../../create-todo";
 import TodoItem from ".";
 
 describe("props", () => {
   const {
+    expectInstanceOf,
     expectRequired,
     expectType
-  } = testPropTypes(TodoItem, { value: "buy groceries" });
+  } = testPropTypes(
+    TodoItem,
+    {
+      removeTodo: () => null,
+      todo: createTodo("buy groceries")
+    }
+  );
 
-  describe("value", () => {
+  describe("removeTodo", () => {
     it("is required", () => {
-      expectRequired("value");
+      expectRequired("removeTodo");
     });
 
-    it("is a string", () => {
-      expectType("value");
+    it("is a function", () => {
+      expectType("removeTodo");
+    });
+  });
+
+  describe("todo", () => {
+    it("is required", () => {
+      expectRequired("todo");
+    });
+
+    it("is an immutable todo", () => {
+      expectInstanceOf("todo");
     });
   });
 });
 
 describe("behavior", () => {
+  const todo = "buy groceries";
+
+  const setUp = () => {
+    const removeTodo = jest.fn();
+
+    return {
+      removeTodo,
+      render: render((
+        <TodoItem
+          removeTodo={removeTodo}
+          todo={createTodo(todo)}
+        />
+      ))
+    };
+  };
+
   afterEach(() => {
     cleanup();
   });
 
   it("displays the todo", () => {
-    const value = "buy groceries";
-    const { queryAllByText } = render(<TodoItem value={value} />);
-    expect(queryAllByText(value).length).toBe(1);
+    const { render: { queryAllByText } } = setUp();
+    expect(queryAllByText(todo).length).toBe(1);
   });
 });

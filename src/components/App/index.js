@@ -1,7 +1,7 @@
 import { Fragment } from "preact";
 import { useReducer } from "preact/hooks";
 import { List as ImmutableList } from "immutable";
-import { addTodo } from "../../actions";
+import { addTodo, removeTodo } from "../../actions";
 import useDispatch from "../../use-dispatch";
 import TodoList from "../todo-list";
 import TodoEntry from "../todo-entry";
@@ -21,7 +21,10 @@ const App = () => {
       </header>
       <main>
         <TodoEntry addTodo={useDispatch(dispatch, addTodo)} />
-        <TodoList todos={todos} />
+        <TodoList
+          removeTodo={useDispatch(dispatch, removeTodo)}
+          todos={todos}
+        />
       </main>
       <footer>
         {"© 2019 Samuel Dolha"}
